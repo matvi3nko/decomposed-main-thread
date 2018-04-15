@@ -1,0 +1,15 @@
+{
+  "name": "holyjs18-process-pool",
+  "version": "1.0.0",
+  "description": "HolyJS conf 2018 demos",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "hokyjs",
+    "holyjs18"
+  ],
+  "author": "Matvienko Nikolay",
+  "license": "MIT"
+}
