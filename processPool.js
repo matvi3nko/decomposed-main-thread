@@ -45,7 +45,7 @@ class ProcessPool {
     acquire (callback) {
         let worker;
         if (this.pool.length > 0) {
-            // [1]
+           
             worker = this.pool.pop();
             this.active.push(worker);
             return process.nextTick(callback.bind(null, null, worker));
