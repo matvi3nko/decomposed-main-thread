@@ -4,12 +4,38 @@
   "description": "HolyJS conf 2018 demos",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "node index.js",
+    "server:case1": "npm run server -- --c 1",
+    "server:case2": "npm run server -- --c 2",
+    "server:case3": "npm run server -- --c 3 | pino-elasticsearch",
+    "server:case4": "npm run server -- --c 4 | pino-elasticsearch",
+    "server:case5": "npm run server -- --c 5",
+    "start:case1": "concurrently --kill-others-on-fail \"elasticsearch\" \"npm run server:case1\"",
+    "start:case2": "concurrently --kill-others-on-fail \"elasticsearch\" \"npm run server:case2\"",
+    "start:case3": "concurrently --kill-others-on-fail \"elasticsearch\" \"npm run server:case3\"",
+    "start:case4": "concurrently --kill-others-on-fail \"elasticsearch\" \"npm run server:case4\"",
+    "start:case5": "concurrently --kill-others-on-fail \"elasticsearch\" \"npm run server:case5\""
   },
   "keywords": [
-    "hokyjs",
-    "holyjs18"
+    "main",
+    "thread"
   ],
   "author": "Matvienko Nikolay",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.3",
+    "fastify": "^1.3.0",
+    "graphite": "^0.1.2",
+    "measured": "^1.1.0",
+    "newrelic": "^4.1.0",
+    "pino": "^4.16.1",
+    "winston": "^3.0.0-rc5",
+    "winston-elasticsearch": "^0.5.9"
+  },
+  "devDependencies": {
+    "blocked-at": "^1.1.2",
+    "concurrently": "^3.5.1",
+    "minimist": "^1.2.0"
+  }
 }

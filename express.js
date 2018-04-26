@@ -1,6 +1,5 @@
 'use strict';
 
-const nr = require('newrelic');
 const express = require('express');
 const app = express();
 
@@ -18,11 +17,7 @@ module.exports = function createServer (config, logger, CpuTask) {
 
         return subsetSum.start()
             .then(result => {
-                const meta = {
-                    method: req.method,
-                    url: req.url,
-                    headers: req.headers
-                };
+                const meta = { method: req.method, url: req.url, headers: req.headers };
 
                 logger.info(meta, 'Winston log');
 
