@@ -6,6 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "node index.js",
+    "server:express": "npm run server -- --c 100",
+    "server:fastify": "npm run server -- --c 101",
     "server:case1": "npm run server -- --c 1",
     "server:case2": "npm run server -- --c 2",
     "server:case3": "npm run server -- --c 3 | pino-elasticsearch",

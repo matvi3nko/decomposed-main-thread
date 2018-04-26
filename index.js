@@ -4,8 +4,7 @@
 'use strict';
 
 const argv = require('minimist')(process.argv.slice(2));
-console.dir(argv);
-const { case1, case2, case3, case4, case5 } = require('./serverFactory');
+const { case1, case2, case3, case4, case5, express, fastify } = require('./lib/serverFactory');
 
 switch (argv.c) {
     case 1:
@@ -29,6 +28,14 @@ switch (argv.c) {
     case 5:
         require('newrelic');
         case5();
+        break;
+
+    case 100:
+        express();
+        break;
+
+    case 101:
+        fastify();
         break;
     default:
         console.warn( 'Incorrect scenario please use npm scripts.' );
