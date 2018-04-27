@@ -5,7 +5,9 @@
 
 const argv = require('minimist')(process.argv.slice(2));
 const serverFactory = require('./lib/serverFactory');
-const { case1, case2, case3, case4, case5, case6, case7, case8, express, fastify } = serverFactory;
+const { case1, case2, case3, case4,
+        case5, case6, case7, case8, case9,
+        express, fastify } = serverFactory;
 
 switch (argv.c) {
     case 1:
@@ -42,6 +44,10 @@ switch (argv.c) {
 
     case 8:
         case8();
+        break;
+
+    case 9:
+        case9();
         break;
 
     case 100:
