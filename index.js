@@ -4,30 +4,44 @@
 'use strict';
 
 const argv = require('minimist')(process.argv.slice(2));
-const { case1, case2, case3, case4, case5, express, fastify } = require('./lib/serverFactory');
+const serverFactory = require('./lib/serverFactory');
+const { case1, case2, case3, case4, case5, case6, case7, case8, express, fastify } = serverFactory;
 
 switch (argv.c) {
     case 1:
         require('newrelic');
         case1();
         break;
+
     case 2:
         require('newrelic');
         case2();
         break;
 
     case 3:
-        require('newrelic');
         case3();
         break;
 
     case 4:
-        //require('newrelic');
         case4();
         break;
+
     case 5:
         require('newrelic');
         case5();
+        break;
+
+    case 6:
+        require('newrelic');
+        case6();
+        break;
+
+    case 7:
+        case7();
+        break;
+
+    case 8:
+        case8();
         break;
 
     case 100:
