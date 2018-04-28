@@ -3,10 +3,12 @@
  */
 'use strict';
 
+process.env.UV_THREADPOOL_SIZE = 2;
+
 const argv = require('minimist')(process.argv.slice(2));
 const serverFactory = require('./lib/serverFactory');
 const { case1, case2, case3, case4,
-        case5, case6, case7, case8, case9,
+        case5, case6, case7, case8, case9, case10,
         express, fastify } = serverFactory;
 
 switch (argv.c) {
@@ -50,6 +52,10 @@ switch (argv.c) {
         case9();
         break;
 
+    case 10:
+        case10();
+        break;
+
     case 100:
         express();
         break;
@@ -57,7 +63,8 @@ switch (argv.c) {
     case 101:
         fastify();
         break;
+
     default:
         console.warn( 'Incorrect scenario please use npm scripts.' );
-        case1();
+        case3();
 }
