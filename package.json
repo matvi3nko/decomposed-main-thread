@@ -17,6 +17,7 @@
     "cluster:case3": "npm run server -- --c 7 | pino-elasticsearch",
     "cluster:case4": "npm run server -- --c 8 | pino-elasticsearch",
     "cluster:case5": "npm run server -- --c 9 | pino-elasticsearch",
+    "cluster:case6": "npm run server -- --c 10",
     "start:case1": "concurrently --kill-others-on-fail \"elasticsearch\" \"npm run server:case1\"",
     "start:case2": "concurrently --kill-others-on-fail \"elasticsearch\" \"npm run server:case2\"",
     "start:case3": "concurrently --kill-others-on-fail \"elasticsearch\" \"npm run server:case3\"",
