@@ -3,22 +3,22 @@
  */
 'use strict';
 
-process.env.UV_THREADPOOL_SIZE = 2;
+process.env.UV_THREADPOOL_SIZE = 4;
 
 const argv = require('minimist')(process.argv.slice(2));
 const serverFactory = require('./lib/serverFactory');
 const { case1, case2, case3, case4,
-        case5, case6, case7, case8, case9, case10,
-        express, fastify } = serverFactory;
+        case5, case6, case7, case8, case9, case10, case11,
+        express, fastify, napa } = serverFactory;
 
 switch (argv.c) {
     case 1:
-        require('newrelic');
+        //require('newrelic');
         case1();
         break;
 
     case 2:
-        require('newrelic');
+        //require('newrelic');
         case2();
         break;
 
@@ -31,12 +31,12 @@ switch (argv.c) {
         break;
 
     case 5:
-        require('newrelic');
+        //require('newrelic');
         case5();
         break;
 
     case 6:
-        require('newrelic');
+        //require('newrelic');
         case6();
         break;
 
@@ -56,6 +56,10 @@ switch (argv.c) {
         case10();
         break;
 
+    case 11:
+        case11();
+        break;
+
     case 100:
         express();
         break;
@@ -64,7 +68,11 @@ switch (argv.c) {
         fastify();
         break;
 
+    case 102:
+        napa();
+        break;
+
     default:
-        console.warn( 'Incorrect scenario please use npm scripts.' );
-        case3();
+        process.stderr.write('Incorrect scenario please use npm scripts.');
+        napa();
 }

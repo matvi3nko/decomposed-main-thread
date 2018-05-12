@@ -5,9 +5,11 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
     "server": "node index.js",
     "server:express": "npm run server -- --c 100",
     "server:fastify": "npm run server -- --c 101",
+    "server:napa": "npm run server -- --c 102",
     "server:case1": "npm run server -- --c 1",
     "server:case2": "npm run server -- --c 2",
     "server:case3": "npm run server -- --c 3 | pino-elasticsearch",
@@ -18,6 +20,7 @@
     "cluster:case4": "npm run server -- --c 8 | pino-elasticsearch",
     "cluster:case5": "npm run server -- --c 9 | pino-elasticsearch",
     "cluster:case6": "npm run server -- --c 10",
+    "cluster:napa": "npm run server -- --c 11",
     "start:case1": "concurrently --kill-others-on-fail \"elasticsearch\" \"npm run server:case1\"",
     "start:case2": "concurrently --kill-others-on-fail \"elasticsearch\" \"npm run server:case2\"",
     "start:case3": "concurrently --kill-others-on-fail \"elasticsearch\" \"npm run server:case3\"",
@@ -40,15 +43,18 @@
     "graphite": "^0.1.2",
     "measured": "^1.1.0",
     "napa": "^3.0.0",
+    "napajs": "^0.2.3",
     "newrelic": "^4.1.0",
     "pino": "^4.16.1",
     "pino-elasticsearch": "^2.2.1",
+    "react": "^16.3.2",
     "winston": "^3.0.0-rc5",
     "winston-elasticsearch": "^0.5.9"
   },
   "devDependencies": {
     "blocked-at": "^1.1.2",
     "concurrently": "^3.5.1",
-    "minimist": "^1.2.0"
+    "minimist": "^1.2.0",
+    "pmx": "^1.6.4"
   }
 }
