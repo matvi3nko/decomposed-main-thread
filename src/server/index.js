@@ -21,11 +21,6 @@ const getPageEnd = (cssHash, js) => PageEnd.replace('%cssHash%', cssHash).replac
  * @param clientStats Parameter passed by hot server middleware
  */
 
-const fs = require('fs');
-
-const writable = fs.createWriteStream('file.txt');
-
-
 export default ({ clientStats }) => async (req, res, next) => {
     const stream = ReactDOM.renderToNodeStream(<App/>);
     const chunkNames = flushChunkNames();
@@ -33,16 +28,7 @@ export default ({ clientStats }) => async (req, res, next) => {
 
     res.write(getPageStart(stylesheets));
     res.write('<div id="react-root">');
-    //stream.pipe(res, { end: false });
-
-    stream.pipe(writable);
-
-    // stream.on('data', (chunk) => {
-    //
-    //     console.log(chunk.toString());
-    //     console.log('got %d characters of string data', chunk.length);
-    // });
-
+    stream.pipe(res, { end: false });
     stream.on('end', () => {
         res.write('</div>');
         res.end(getPageEnd(cssHash, js));
