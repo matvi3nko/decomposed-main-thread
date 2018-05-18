@@ -3,9 +3,23 @@ import ReactDOM from 'react-dom/server';
 import { flushChunkNames } from 'react-universal-component/server';
 import flushChunks from 'webpack-flush-chunks';
 
+import controllerFactory from '../../lib/controllers/controllerFactory';
 import PageStart from './partials/_start.html';
 import PageEnd from './partials/_end.html';
 import App from '../shared/App';
+
+const CpuTask = require('../../lib/tasks/CpuTask');
+const ParallelCpuTask = require('../../lib/tasks/ParallelCpuTask');
+//Configuration
+const config = require('../../config');
+const { routes, port, cpuData, logData } = config;
+
+
+const pinoLogger = require('pino')();
+
+
+const controller = controllerFactory(pinoLogger, ParallelCpuTask);
+
 
 const getPageStart = (styles) => PageStart.replace(
     '%styles%',
@@ -22,15 +36,26 @@ const getPageEnd = (cssHash, js) => PageEnd.replace('%cssHash%', cssHash).replac
  */
 
 export default ({ clientStats }) => async (req, res, next) => {
-    const stream = ReactDOM.renderToNodeStream(<App/>);
-    const chunkNames = flushChunkNames();
-    const { js, stylesheets, cssHash } = flushChunks(clientStats, { chunkNames });
+    const data = "TEST";
+    // req.metaData = { method: req.method, url: req.url, headers: req.headers };
+    // req.data = cpuData;
+    //return controller.holy(req, res).then(data => {});
 
-    res.write(getPageStart(stylesheets));
-    res.write('<div id="react-root">');
-    stream.pipe(res, { end: false });
-    stream.on('end', () => {
-        res.write('</div>');
-        res.end(getPageEnd(cssHash, js));
+    req.data = logData;
+    return controller.api(req, res).then(data => {
+        
+        res.send(ReactDOM.renderToString(<App list={data}/>));
+        //
+        // const stream = ReactDOM.renderToNodeStream(<App list={data}/>);
+        // const chunkNames = flushChunkNames();
+        // const { js, stylesheets, cssHash } = flushChunks(clientStats, { chunkNames });
+        //
+        // res.write(getPageStart(stylesheets));
+        // res.write('<div id="react-root">');
+        // stream.pipe(res, { end: false });
+        // stream.on('end', () => {
+        //     res.write('</div>');
+        //     res.end(getPageEnd(cssHash, js));
+        // });
     });
 };

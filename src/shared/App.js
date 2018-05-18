@@ -1,12 +1,20 @@
 import React, { Component } from 'react';
+import SubTitle from './SubTitle';
+import Title from './Title';
 
 import './app.styl';
+import List from "./List";
 
 export default class App extends Component {
 
     render () {
         return (
-            <h1>Welcome to React Fiber!</h1>
+            <div>
+                <Title/>
+                <SubTitle/>
+                <List data={this.props.list}/>
+            </div>
+
         );
     }
 

@@ -2,6 +2,7 @@ import express from 'express';
 import { join } from 'path';
 
 import { log } from 'winston';
+const cluster = require('../lib/servers/сlusterFactory');
 
 /**
  * Configures hot reloading and assets paths for local development environment.
@@ -18,7 +19,7 @@ const configureDevelopment = app => {
     const multiCompiler = require('webpack')([clientConfig, serverConfig]);
     const clientCompiler = multiCompiler.compilers[0];
 
-    app.use(require('webpack-dev-middleware')(multiCompiler, {publicPath}));
+    app.use(require('webpack-dev-middleware')(multiCompiler, { publicPath }));
     app.use(require('webpack-hot-middleware')(clientCompiler));
 
     app.use(publicPath, express.static(outputPath));
@@ -48,15 +49,20 @@ const configureProduction = app => {
     }));
 };
 
-const app = express();
+const worker = () => {
+    const app = express();
 
-log('info', `Configuring server for environment: ${process.env.NODE_ENV}...`);
-if (process.env.NODE_ENV === 'development') {
-    configureDevelopment(app);
-} else {
-    configureProduction(app);
-}
+    log('info', `Configuring server for environment: ${process.env.NODE_ENV}...`);
+    if (process.env.NODE_ENV === 'development') {
+        configureDevelopment(app);
+    } else {
+        configureProduction(app);
+    }
 
-app.set('port', process.env.PORT || 3000);
+    app.set('port', process.env.PORT || 3000);
 
-app.listen(app.get('port'), () => log('info', `Server listening on port ${app.get('port')}...`));
+    app.listen(app.get('port'), () => log('info', `Server listening on port ${app.get('port')}...`));
+};
+
+
+cluster(worker);

@@ -9,7 +9,7 @@ const argv = require('minimist')(process.argv.slice(2));
 const serverFactory = require('./lib/serverFactory');
 const { case1, case2, case3, case4,
         case5, case6, case7, case8, case9, case10, case11,
-        express, fastify, napa } = serverFactory;
+        express, fastify, napa, ssr } = serverFactory;
 
 switch (argv.c) {
     case 1:
@@ -31,12 +31,12 @@ switch (argv.c) {
         break;
 
     case 5:
-        //require('newrelic');
+        require('newrelic');
         case5();
         break;
 
     case 6:
-        //require('newrelic');
+        require('newrelic');
         case6();
         break;
 
@@ -74,5 +74,5 @@ switch (argv.c) {
 
     default:
         process.stderr.write('Incorrect scenario please use npm scripts.');
-        napa();
+        ssr();
 }
