@@ -1,6 +1,7 @@
 import express from 'express';
 import { join } from 'path';
-
+import { readFileSync } from 'fs';
+import https from 'https';
 import { log } from 'winston';
 
 /**
