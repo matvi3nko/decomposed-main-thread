@@ -5,20 +5,28 @@
 
 process.env.UV_THREADPOOL_SIZE = 4;
 
+
 const argv = require('minimist')(process.argv.slice(2));
+// if (argv.c === 5 || argv.c === 6) {
+//     require('newrelic');
+// }
+
+//require('newrelic');
+
 const serverFactory = require('./lib/serverFactory');
-const { case1, case2, case3, case4,
-        case5, case6, case7, case8, case9, case10, case11,
-        express, fastify, napa } = serverFactory;
+const {
+    case1, case2, case3, case4,
+    case5, case6, case7, case8, case9, case10, case11,
+    express, fastify, napa,
+    framework1, framework2, logger1, logger2
+} = serverFactory;
 
 switch (argv.c) {
     case 1:
-        //require('newrelic');
         case1();
         break;
 
     case 2:
-        //require('newrelic');
         case2();
         break;
 
@@ -31,12 +39,10 @@ switch (argv.c) {
         break;
 
     case 5:
-        //require('newrelic');
         case5();
         break;
 
     case 6:
-        //require('newrelic');
         case6();
         break;
 
@@ -70,6 +76,23 @@ switch (argv.c) {
 
     case 102:
         napa();
+        break;
+
+    case 'express':
+        framework1();
+        break;
+
+    case 'fastify':
+        framework2();
+        break;
+
+
+    case 'winston':
+        logger1();
+        break;
+
+    case 'pino':
+        logger2();
         break;
 
     default:

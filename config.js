@@ -5,7 +5,8 @@
 module.exports = {
     graphiteHost: 'plaintext://cc5d5e19.carbon.hostedgraphite.com:2003/',
     graphiteHostedKey: 'xxxxxxxxxxxxxxxxxxxxxxxxxxx',
-    routes: ['', 'a', 'aa', 'b', 'bb', 'c', 'cc', 'cca', 'ccb', 'cp', 'cpa', 'cpb', 'cpc'],
+    routes: ['', 'a', 'aa', 'b', 'bb', 'c', 'cc', 'cca', 'ccb', 'cp', 'cpa',
+        'cpb', 'cpc', 'ddd', 'h', 'ho', 'holyy', 'holyjs', 'holyholy', 'hol'],
     port: 3000,
     cpuData: {
         micro: {
@@ -13,7 +14,8 @@ module.exports = {
             sum: 42
         },
         macro: {
-            set: [50, 99, -50, -42, -58, -2, -10, 17, 42, 40, 60, 77, -500, -100, - 200],
+            set: [50, 99, -50, -42, -58, -2, -10, 17,
+                42, 40, 60, 77, -500],
             sum: 0
         }
     },
