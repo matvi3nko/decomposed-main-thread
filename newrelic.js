@@ -1,4 +1,4 @@
- 'use strict'
+ 'use strict';
 /**
  * New Relic agent configuration.
  *
@@ -13,7 +13,7 @@ module.exports.config = {
   /**
    * Your New Relic license key.
    */
-  license_key: 'eaffab861abdbaddcc5364fc1414623da0e7b395',
+  license_key: '3bcc3990abf6441a432344ece8cc6b53e8f43e6b',
   logging: {
     /**
      * Level at which to log. 'trace' is most useful to New Relic when diagnosing
@@ -50,4 +50,4 @@ module.exports.config = {
       'response.headers.x*'
     ]
   }
-}
+};

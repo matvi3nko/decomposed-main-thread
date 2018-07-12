@@ -11,30 +11,34 @@ const argv = require('minimist')(process.argv.slice(2));
 //     require('newrelic');
 // }
 
-//require('newrelic');
+
 
 const serverFactory = require('./lib/serverFactory');
 const {
     case1, case2, case3, case4,
     case5, case6, case7, case8, case9, case10, case11,
     express, fastify, napa,
-    framework1, framework2, logger1, logger2
+    framework1, framework2, logger1, logger2, thread, threads
 } = serverFactory;
 
 switch (argv.c) {
     case 1:
+        require('newrelic');
         case1();
         break;
 
     case 2:
+        require('newrelic');
         case2();
         break;
 
     case 3:
+        require('newrelic');
         case3();
         break;
 
     case 4:
+        require('newrelic');
         case4();
         break;
 
@@ -79,13 +83,13 @@ switch (argv.c) {
         break;
 
     case 'express':
+        require('newrelic');
         framework1();
         break;
 
     case 'fastify':
         framework2();
         break;
-
 
     case 'winston':
         logger1();
@@ -95,7 +99,15 @@ switch (argv.c) {
         logger2();
         break;
 
+    case 'thread':
+        thread();
+        break;
+
+    case 'threads':
+        threads();
+        break;
+
     default:
         process.stderr.write('Incorrect scenario please use npm scripts.');
-        napa();
+        threads();
 }
