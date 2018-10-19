@@ -12,7 +12,6 @@ const argv = require('minimist')(process.argv.slice(2));
 // }
 
 
-
 const serverFactory = require('./lib/serverFactory');
 const {
     case1, case2, case3, case4,
@@ -43,26 +42,32 @@ switch (argv.c) {
         break;
 
     case 5:
+        require('newrelic');
         case5();
         break;
 
     case 6:
+        require('newrelic');
         case6();
         break;
 
     case 7:
+        require('newrelic');
         case7();
         break;
 
     case 8:
+        require('newrelic');
         case8();
         break;
 
     case 9:
+        require('newrelic');
         case9();
         break;
 
     case 10:
+        require('newrelic');
         case10();
         break;
 

@@ -1,0 +1,15 @@
+message Item {
+  int32 sku = 1;
+}
+
+message Order {
+  required int32 id  = 1;
+  required float priceWithDiscount = 2;
+  required int32 discount = 3;
+  required float totalPrice = 4;
+  repeated Item items = 5;
+}
+
+message Payload {
+  repeated Order list = 1;
+}

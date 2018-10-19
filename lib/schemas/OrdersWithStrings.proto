@@ -1,0 +1,14 @@
+message Item {
+  string name = 1;
+}
+
+message Order {
+  required int32 id  = 1;
+  required string data = 2;
+  required float totalPrice = 3;
+  repeated Item items = 4;
+}
+
+message Payload {
+  repeated Order list = 1;
+}

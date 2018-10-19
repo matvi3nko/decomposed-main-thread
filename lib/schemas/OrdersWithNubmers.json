@@ -1,0 +1,37 @@
+{
+  "title": "Orders Schema",
+  "type": "object",
+  "properties": {
+    "list": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "discount": {
+            "type": "integer"
+          },
+          "priceWithDiscount": {
+            "type": "number"
+          },
+          "totalPrice": {
+            "type": "number"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "sku": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
